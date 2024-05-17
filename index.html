@@ -44,14 +44,14 @@
                     .then(respuesta => respuesta.json());
 
                 // Renderizar el horario en la tabla
-                const tbody = document.querySelector('#horariosTable tbody');
+                const tbody = document.querySelector('#horarioTable tbody');
                 horarios.forEach(horario => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${horarioModulos.nombre}</td>
-                        <td>${horarioModulos.apellido}</td>
-                        <td>${horarioModulos.asignatura}</td>
-                        <td>${horarioModulos.añoIngreso}</td>
+                        <td>${horario.nombre}</td>
+                        <td>${horario.apellido}</td>
+                        <td>${horario.asignatura}</td>
+                        <td>${horario.añoIngreso}</td>
                     `;
                     tbody.appendChild(row);
                 });
