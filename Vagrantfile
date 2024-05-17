@@ -9,11 +9,20 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
 
       # Instalación de los binarios de PHP, el driver mysqli y la extensión FPM para realizar peticiones de tipo RESTful
-          
+       sudo apt-get update
        sudo apt-get install -y php php-mysqli
 
       # Generar archivo SQL con los registros de los diferentes Módulos Profesionales
-      
+    echo "-- Insertar datos de ejemplo en la tabla 'horarioModulos'" > /home/vagrant/gestion_horarios.sql
+    echo "INSERT INTO modulos_profesionales.horarioModulos (nombre, apellido, asignatura, añoIngreso) VALUES" >> /home/vagrant/gestion_horarios.sql
+    echo "('Diego', 'Alonso', 'SISIN', 2022)," >> /home/vagrant/gestion_horarios.sql
+    echo "('Diego', 'Mateos', 'PROG', 2022)," >> /home/vagrant/gestion_horarios.sql
+    echo "('Guillermo', 'Román', 'ENDES', 2022) " >> /home/vagrant/gestion_horarios.sql
+    echo "('Bea', 'López', 'LMGSI', 2020)," >> /home/vagrant/gestion_horarios.sql
+    echo "('Lorena', 'Franco', 'LEUP', 2021)," >> /home/vagrant/gestion_horarios.sql
+    echo "('Tomás', 'Huerta', 'BADAT', 2020)," >> /home/vagrant/gestion_horarios.sql
+   
+    
 
   SHELL
 
