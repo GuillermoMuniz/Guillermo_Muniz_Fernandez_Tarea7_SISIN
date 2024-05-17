@@ -11,33 +11,56 @@
 
 <body>
 
-    <h1>Práctica SISIN - Tema 7</h1>
-
+    <h1>Práctica SISIN - Tema 7 - Guillermo Muñiz Fernández</h1>
     
+    <table id="horarioTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Asignatura</th>
+                <th>Año Ingreso</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+        const urlObtenerHorarios = 'backend/conexionBBDD.php';
 
-        const urlObtenerHorario = ''
-
-        // Llamar a la función obtenerHorario para cargar la lista de Módulos Profesionales al cargar la página web
-        obtenerHorario()
+        // Llamar a la función obtenerHorarios para cargar la lista de Módulos Profesionales al cargar la página web
+        obtenerHorarios();
 
         // Función asíncrona para obtener la lista de empleados
-        async function obtenerHorario() {
+        async function obtenerHorarios() {
             try {
                 // Obtener la lista de empleados del backend
-                const horario = await fetch(urlObtenerHorario)
+                const horarios = await fetch(urlObtenerHorarios)
                     .then(respuesta => respuesta.json());
 
-                // Renderizar el horario aquí...
-                
+                // Renderizar el horario en la tabla
+                const tbody = document.querySelector('#horariosTable tbody');
+                horarios.forEach(horario => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${horarioModulos.nombre}</td>
+                        <td>${horarioModulos.apellido}</td>
+                        <td>${horarioModulos.asignatura}</td>
+                        <td>${horarioModulos.añoIngreso}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
             } catch (error) {
                 console.log(error);
             }
 
         }
-
     </script>
 
 </body>
