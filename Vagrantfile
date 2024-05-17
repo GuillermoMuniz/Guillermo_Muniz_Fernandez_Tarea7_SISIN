@@ -12,6 +12,8 @@ Vagrant.configure("2") do |config|
        sudo apt install -y nginx
        sudo apt-get update
        sudo apt-get install -y php php-mysqli
+       # Tratar la petición desde el Front al Back: API de tipo RESTful
+       sudo apt-get install php7.0-fpm
 
       # Generar archivo SQL con los registros de los diferentes Módulos Profesionales
     echo "-- Insertar datos de ejemplo en la tabla 'horarioModulos'" > /home/vagrant/gestion_horarios.sql
